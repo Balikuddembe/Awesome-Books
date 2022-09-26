@@ -44,10 +44,10 @@ if (localStorage.localForm) {
 // remove books section
 
 bookList.addEventListener('click', (eve) => {
-    if (eve.target.classList.contains('remove')) {
-    const parent = eve.target.parentElement;
-    document.querySelector('.list').removeChild(parent);
-    const removeBook = storedBooks.find((item) => item.title === parent.firstChild.innerText);
-    storedBooks.splice(storedBooks.indexOf(removeBook), 1);
+  if (eve.target.classList.contains('remove')) {
+  const parent = eve.target.parentElement;
+  document.querySelector('.list').removeChild(parent);
+  const removeBook = storedBooks.find((item) => item.title === parent.firstChild.innerText);
+  storedBooks.splice(storedBooks.indexOf(removeBook), 1);
   }
 });
