@@ -3,12 +3,35 @@ const bookList = document.querySelector('#list');
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const form = document.querySelector('#form');
-const Book = function objBook(title, author) {
-  this.title = title;
-  this.author = author;
+
+class Book {
+  constructor (title,author) {
+    this.title = title;
+    this.author = author;
+  }
 };
+
+class Storage {
+  static getBooks(){
+    let books;
+    if(localStorage.getItem('books')===null) {
+      books=[];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'))
+    }
+    return books;
+  }
+
+  static addBook () {
+    
+  }
+}
+
 const storedBooks = [];
-function addBooks(newBook) {
+
+class dispayBooks {
+
+static addBooks(newBook) {
   const bookStore = `<div class = "book">
   <h2> ${newBook.title}</h2> 
   <p class="by">by</p>
@@ -19,13 +42,24 @@ function addBooks(newBook) {
   bookList.innerHTML += bookStore;
   return bookList.innerHTML;
 }
-// local storage section
-let localForm = { title: '', author: '' };
-if (localStorage.localForm) {
-  localForm = JSON.parse(localStorage.localForm);
-  title.value = localForm.title;
-  author.value = localForm.author;
+
+static addBook() {
+
 }
+
+static removeBook() {
+
+}
+// local storage section
+
+static getStorage() {
+  if (localStorage.localForm) {
+    localForm = JSON.parse(localStorage.localForm);
+    title.value = localForm.title;
+    author.value = localForm.author;
+  }
+}
+
 form.addEventListener('input', () => {
   localStorage.localForm = JSON.stringify(localForm);
   localForm.title = title.value;
@@ -43,6 +77,7 @@ addBook.addEventListener('click', (e) => {
   }
 });
 // remove books section
+
 bookList.addEventListener('click', (eve) => {
   if (eve.target.classList.contains('remove')) {
     document.querySelector('.list').removeChild(eve.target.parentElement);
@@ -51,3 +86,4 @@ bookList.addEventListener('click', (eve) => {
     storedBooks.splice(storedBooks.indexOf(removeBook), 1);
   }
 });
+}
