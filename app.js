@@ -25,7 +25,7 @@ if (localStorage.localForm) {
   localForm = JSON.parse(localStorage.localForm);
   title.value = localForm.title;
   author.value = localForm.author;
-} 
+}
 form.addEventListener('input', () => {
   localStorage.localForm = JSON.stringify(localForm);
   localForm.title = title.value;
