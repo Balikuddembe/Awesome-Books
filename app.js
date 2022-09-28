@@ -1,9 +1,3 @@
-// Const addBook = document.querySelector('#btn');
-// const bookList = document.querySelector('#list');
-// const title = document.querySelector('#title');
-// const author = document.querySelector('#author');
-// const form = document.querySelector('#form');
-
 class Book {
 	constructor(title, author) {
 		this.title = title;
