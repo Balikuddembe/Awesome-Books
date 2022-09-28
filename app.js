@@ -8,10 +8,10 @@ class Book {
 class Storage {
 	static getBooks() {
 		let books;
-		if (localStorage.getItem('books') === null) {
+		if (localStorage.getItem("books") === null) {
 			books = [];
 		} else {
-			books = JSON.parse(localStorage.getItem('books'));
+			books = JSON.parse(localStorage.getItem("books"));
 		}
 
 		return books;
@@ -20,16 +20,16 @@ class Storage {
 	static addBook(book) {
 		const books = Storage.getBooks();
 		books.push(book);
-		localStorage.setItem('books', JSON.stringify(books));
+		localStorage.setItem("books", JSON.stringify(books));
 	}
 
 	static removeBook(book) {
-		const bookTitle = book.querySelector('#title').innerText;
+		const bookTitle = book.querySelector("#title").innerText;
 		const books = Storage.getBooks();
 		const filterBooks = books.filter(book => bookTitle === book.title);
 		const filterIndex = books.indexOf(filterBooks[0]);
 		books.splice(filterIndex, 1);
-		localStorage.setItem('books', JSON.stringify(books));
+		localStorage.setItem("books", JSON.stringify(books));
 	}
 }
 
@@ -40,8 +40,8 @@ class displayDynamic {
 	}
 
 	static addBooksCollection(book) {
-		const books = document.querySelector('.list');
-		const newBook = document.createElement('div');
+		const books = document.querySelector(".list");
+		const newBook = document.createElement("div");
 		newBook.innerHTML = `
         <div class = 'book-cont'>
         <div class = "book-details">
@@ -54,35 +54,35 @@ class displayDynamic {
         <hr class='hr>
         </div>
         `;
-		newBook.classList.add('newBook');
+		newBook.classList.add("newBook");
 		books.appendChild(newBook);
 	}
 
 	static deleteBook(eve) {
-		if (eve.classList.contains('remove')) {
+		if (eve.classList.contains("remove")) {
 			eve.parentElement.parentElement.remove();
 		}
 	}
 
 	static clearFields() {
-		document.querySelector('.title').value = '';
-		document.querySelector('.author').value = '';
+		document.querySelector(".title").value = "";
+		document.querySelector(".author").value = "";
 	}
 }
 
-document.addEventListener('DOMContentLoaded', displayDynamic.displayBooks);
-document.querySelector('#form').addEventListener('submit', e => {
+document.addEventListener("DOMContentLoaded", displayDynamic.displayBooks);
+document.querySelector("#form").addEventListener("submit", e => {
 	e.preventDefault();
-	const inputTitle = document.querySelector('.title').value;
-	const inputAuthor = document.querySelector('.author').value;
+	const inputTitle = document.querySelector(".title").value;
+	const inputAuthor = document.querySelector(".author").value;
 	const book = new Book(inputTitle, inputAuthor);
 	displayDynamic.addBooksCollection(book);
 	Storage.addBook(book);
 	displayDynamic.clearFields();
 });
 
-document.querySelector('#list').addEventListener('click', e => {
-	if (e.target.className === 'remove') {
+document.querySelector("#list").addEventListener("click", e => {
+	if (e.target.className === "remove") {
 		const book = e.target.parentElement;
 		Storage.removeBook(book);
 		displayDynamic.deleteBook(e.target);
