@@ -1,53 +1,91 @@
-const addBook = document.querySelector('#btn');
-const bookList = document.querySelector('#list');
-const title = document.querySelector('#title');
-const author = document.querySelector('#author');
-const form = document.querySelector('#form');
-const Book = function objBook(title, author) {
-  this.title = title;
-  this.author = author;
-};
-const storedBooks = [];
-function addBooks(newBook) {
-  const bookStore = `<div class = "book">
-  <h2> ${newBook.title}</h2> 
-  <p class="by">by</p>
-  <h2> ${newBook.author}</h2>
-  <button class="remove" type="button">Remove</button>
-  <hr>
-  </div>`;
-  bookList.innerHTML += bookStore;
-  return bookList.innerHTML;
+/* eslint-disable max-classes-per-file */
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
 }
-// local storage section
-let localForm = { title: '', author: '' };
-if (localStorage.localForm) {
-  localForm = JSON.parse(localStorage.localForm);
-  title.value = localForm.title;
-  author.value = localForm.author;
+
+class Storage {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+
+    return books;
+  }
+
+  static addBook(book) {
+    const books = Storage.getBooks();
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static removeBook(book) {
+    const bookTitle = book.querySelector('#title').innerText;
+    const books = Storage.getBooks();
+    const filterBooks = books.filter((book) => bookTitle === book.title);
+    const filterIndex = books.indexOf(filterBooks[0]);
+    books.splice(filterIndex, 1);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
 }
-form.addEventListener('input', () => {
-  localStorage.localForm = JSON.stringify(localForm);
-  localForm.title = title.value;
-  localForm.author = author.value;
+
+class displayDynamic {
+  static displayBooks() {
+    const books = Storage.getBooks();
+    books.forEach((book) => displayDynamic.addBooksCollection(book));
+  }
+
+  static addBooksCollection(book) {
+    const books = document.querySelector('.list');
+    const newBook = document.createElement('div');
+    newBook.innerHTML = `
+        <div class = 'book-cont'>
+        <div class = "book-details">
+        <p id='title'> "${book.title}"</p> 
+        <p class="by">by</p>
+        <p id='author'> ${book.author}</p>
+        </div>
+        <button class="remove" type="button">Remove</button>
+        </div>
+        <hr class='hr>
+        </div>
+        `;
+    newBook.classList.add('newBook');
+    books.appendChild(newBook);
+  }
+
+  static deleteBook(eve) {
+    if (eve.classList.contains('remove')) {
+      eve.parentElement.parentElement.remove();
+    }
+  }
+
+  static clearFields() {
+    document.querySelector('.title').value = '';
+    document.querySelector('.author').value = '';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', displayDynamic.displayBooks);
+document.querySelector('#form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const inputTitle = document.querySelector('.title').value;
+  const inputAuthor = document.querySelector('.author').value;
+  const book = new Book(inputTitle, inputAuthor);
+  displayDynamic.addBooksCollection(book);
+  Storage.addBook(book);
+  displayDynamic.clearFields();
 });
 
-addBook.addEventListener('click', (e) => {
-  if (title.value === '' || author.value === '') {
-    e.preventDefault();
-  } else {
-    const newBook = new Book(title.value, author.value);
-    addBooks(newBook);
-    title.value = '';
-    author.value = '';
-  }
-});
-// remove books section
-bookList.addEventListener('click', (eve) => {
-  if (eve.target.classList.contains('remove')) {
-    document.querySelector('.list').removeChild(eve.target.parentElement);
-    const parent = eve.target.parentElement;
-    const removeBook = storedBooks.find((item) => item.title === parent.firstChild.innerText);
-    storedBooks.splice(storedBooks.indexOf(removeBook), 1);
+document.querySelector('#list').addEventListener('click', (e) => {
+  if (e.target.className === 'remove') {
+    const book = e.target.parentElement;
+    Storage.removeBook(book);
+    displayDynamic.deleteBook(e.target);
   }
 });
