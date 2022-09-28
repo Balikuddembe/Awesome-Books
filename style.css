@@ -1,16 +1,59 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#list {
-  width: 20%;
-  border: 1px solid #ddd;
-  padding: 1rem;
+.book-cont {
+  display: flex;
+  border: 1px solid rgb(0, 0, 0);
+  justify-content: space-between;
+  padding-right: 3%;
+  padding-left: 1%;
+  align-items: center;
 }
 
-#btn {
-  width: 60px;
-  margin-left: 111px;
+.newBook {
+  width: 100%;
+}
+
+.list {
+  width: 75%;
+}
+
+.book-cont p {
+  margin: 10%;
+}
+
+hr {
+  width: 15%;
+  margin: 5%;
+}
+
+.book-details {
+  display: flex;
+  gap: 5px;
+}
+
+.remove {
+  height: 10%;
+}
+
+input {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  text-align: center;
+}
+
+.add {
+  align-self: flex-end;
+}
+
+form h2 {
+  margin-top: 0%;
 }

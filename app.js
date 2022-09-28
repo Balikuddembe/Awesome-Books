@@ -48,7 +48,7 @@ class displayDynamic {
     const books = document.querySelector('.list');
     const newBook = document.createElement('div');
     newBook.innerHTML = `
-        <div>
+        <div class = 'book-cont'>
         <div class = "book-details">
         <p id='title'> "${book.title}"</p> 
         <p class="by">by</p>
