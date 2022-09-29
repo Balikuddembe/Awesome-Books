@@ -99,14 +99,40 @@ const navLink = document.getElementsByClassName('border-sep');
 [...navLink].forEach((link, index) => {
   link.addEventListener('click', () => {
     if (index === 0) {
-      document.getElementsByClassName('list-cont').classList.add('display-block');
-      document.getElementsByClassName('list-cont').classList.remove('display-none');
-      document.getElementsByClassName('form').classList.add('display-none');
-      document.getElementsByClassName('form').classList.add('display-block');
-      document.getElementsByClassName('form').classList.remove('display-block');
-      document.getElementsByClassName('contact-section').classList.add('display-none');
-      document.getElementsByClassName('contact-section').classList.remove('display-block');
-      document.getElementsByClassName('contact-section').classList.remove('display-flex');
+      document.getElementById('list-cont').classList.add('display-block');
+      document.getElementById('list-cont').classList.remove('display-none');
+
+      document.getElementById('form').classList.add('display-none');
+      document.getElementById('form').classList.remove('display-flex');
+      document.getElementById('form').classList.remove('display-block');
+
+      document.getElementById('contact-section').classList.add('display-none');
+      document.getElementById('contact-section').classList.remove('display-block');
+      document.getElementById('contact-section').classList.remove('display-flex');
+    }
+    if(index === 1) {
+      document.getElementById('list-cont').classList.remove('display-block');
+      document.getElementById('list-cont').classList.remove('display-flex');
+      document.getElementById('list-cont').classList.add('display-none');
+
+      document.getElementById('form').classList.add('display-flex');
+      document.getElementById('form').classList.remove('display-none');
+
+      document.getElementById('contact-section').classList.add('display-none');
+      document.getElementById('contact-section').classList.remove('display-flex');
+      document.getElementById('contact-section').classList.remove('display-block');
+    }
+    if(index === 2) {
+      document.getElementById('list-cont').classList.add('display-none');
+      document.getElementById('list-cont').classList.remove('display-block');
+      document.getElementById('list-cont').classList.remove('display-flex');
+      
+      document.getElementById('form').classList.add('display-none');
+      document.getElementById('form').classList.remove('display-flex');
+      document.getElementById('form').classList.remove('display-block');
+
+      document.getElementById('contact-section').classList.add('display-block');
+      document.getElementById('contact-section').classList.remove('display-none');
     }
   })
 })
