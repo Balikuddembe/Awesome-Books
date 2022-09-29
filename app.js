@@ -89,3 +89,8 @@ document.querySelector('#list').addEventListener('click', (e) => {
     displayDynamic.deleteBook(e.target);
   }
 });
+
+const date = new Date();
+const d = date.toDateString();
+const local = date.toLocaleTimeString();
+document.getElementsByClassName('time')[0].innerText=`${d} , ${local}`;
