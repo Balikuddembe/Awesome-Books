@@ -94,3 +94,20 @@ const date = new Date();
 const d = date.toDateString();
 const local = date.toLocaleTimeString();
 document.getElementsByClassName('time')[0].innerText=`${d} , ${local}`;
+
+const navLink = document.getElementsByClassName('border-sep');
+[...navLink].forEach((link, index) => {
+  link.addEventListener('click', () => {
+    if (index === 0) {
+      document.getElementsByClassName('list-cont').classList.add('display-block');
+      document.getElementsByClassName('list-cont').classList.remove('display-none');
+      document.getElementsByClassName('form').classList.add('display-none');
+      document.getElementsByClassName('form').classList.add('display-block');
+      document.getElementsByClassName('form').classList.remove('display-block');
+      document.getElementsByClassName('contact-section').classList.add('display-none');
+      document.getElementsByClassName('contact-section').classList.remove('display-block');
+      document.getElementsByClassName('contact-section').classList.remove('display-flex');
+    }
+  })
+})
+

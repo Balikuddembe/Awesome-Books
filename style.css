@@ -158,3 +158,15 @@ footer h2 {
   margin-right: 2%;
   text-align: end;
 }
+
+.form {
+ display: none;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-flex {
+  display: flex;
+}
