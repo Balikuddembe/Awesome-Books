@@ -24,6 +24,15 @@
   align-items: center;
 }
 
+.cont h1 {
+  font-size: 40px;
+}
+
+.contact-section h1 {
+  font-size: 35px;
+  margin-top: 0%;
+}
+
 #list-cont h1 {
   text-align: center;
 }
@@ -33,9 +42,7 @@
 }
 
 hr {
-  
   margin: 5%;
-  
 }
 
 .book-details {
@@ -59,7 +66,6 @@ form {
   flex-direction: column;
   width: 40%;
   text-align: center;
-  
 }
 
 .form-cont {
@@ -91,17 +97,13 @@ nav {
   padding: 0.4%;
   border: solid;
   margin-left: 1.5%;
-  
 }
 
 nav a {
   text-decoration: none;
-  color: #000000;
+  color: #000;
   margin: 0%;
   font-size: 25px;
-  
-  
-  
 }
 
 .title-h1 {
@@ -116,36 +118,25 @@ nav a {
   width: 40%;
   margin: 0%;
   margin-right: 0%;
- 
 }
 
-.border-sep{
+.border-sep {
   border-right: 3px solid;
   padding: 2%;
   padding-right: 5%;
   padding-left: 5%;
-  
 }
 
 .contact-a {
   padding: 2%;
 }
 
-.cont h1 {
-  font-size: 40px;
-}
-
 .contact-section {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   margin-top: 0%;
-   margin-bottom: 10%;
-}
-
-.contact-section h1 {
-  font-size: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 0%;
+  margin-bottom: 10%;
 }
 
 .contact-section p {
@@ -158,28 +149,26 @@ nav a {
 
 .contact-section li a {
   text-decoration: none;
-  color: #000000;
+  color: #000;
 }
 
 footer {
-  display: flex;  
+  display: flex;
   border: 3px solid;
 }
 
 footer h2 {
-  margin: 1%;  
+  margin: 1%;
   margin-left: 3%;
-
 }
 
 .time {
-  
   margin-right: 2%;
   text-align: end;
 }
 
 .display-none {
- display: none;
+  display: none;
 }
 
 .display-block {
