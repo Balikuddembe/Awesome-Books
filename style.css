@@ -1,7 +1,8 @@
 body {
   background-color: white;
-  font-family:'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
+
 .cont {
   display: flex;
   flex-direction: column;
@@ -140,7 +141,7 @@ nav a {
 }
 
 .book-row:nth-child(even) {
-  background-color: rgb(255,255,255)
+  background-color: rgb(255, 255, 255);
 }
 
 .contact-a {
