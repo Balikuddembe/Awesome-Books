@@ -57,6 +57,7 @@ class displayDynamic {
         `;
     newBook.classList.add('newBook');
     books.appendChild(newBook);
+    newBook.classList.add('book-row');
   }
 
   static deleteBook(eve) {
