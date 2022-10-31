@@ -11,7 +11,6 @@ body {
 
 .book-cont {
   display: flex;
-  border: 3px solid rgb(0, 0, 0);
   justify-content: space-between;
   padding-right: 3%;
   padding-left: 1%;
@@ -42,9 +41,9 @@ body {
   text-align: center;
 }
 
-.book-cont p {
+/* .book-cont p {
   margin: 10%;
-}
+} */
 
 hr {
   margin: 5%;
@@ -111,11 +110,11 @@ nav a {
   font-size: 25px;
 }
 
-.title-h1 {
+/* .title-h1 {
   margin: 0%;
   margin-left: 2%;
   font-size: 25px;
-}
+} */
 
 .sections-cont {
   display: flex;
@@ -141,7 +140,7 @@ nav a {
 }
 
 .book-row:nth-child(even) {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(225, 225, 225);
 }
 
 .contact-a {
